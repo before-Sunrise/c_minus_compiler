@@ -4,6 +4,7 @@ extern FILE* yyin;
 extern int yylex (void);
 
 int main(int argc, char** argv) {
+    /*
     if (argc > 1) {
         if (!(yyin = fopen(argv[1], "r"))) {
             perror(argv[1]);
@@ -11,5 +12,18 @@ int main(int argc, char** argv) {
         }
     }
     while (yylex() != 0);
+    return 0;*/
+    if(argc <= 1){
+        return 1;
+    }
+    FILE* f = fopen(argv[1], "r");
+    if(!f){
+        perror(argv[1]);
+        return 1;
+    }
+    //将yyin设置为f
+    yyrestart(f);
+    //进行语法分析
+    yyparse();
     return 0;
 } 

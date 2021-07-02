@@ -1,3 +1,6 @@
+%{
+    #include "syntax.tab.h"
+%}
 letter      [a-zA-Z]
 digit       [0-9]
 INT         [+-]?(0|([1-9]{digit}*))
